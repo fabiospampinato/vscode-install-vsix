@@ -1,0 +1,92 @@
+{
+  "name": "vscode-install-vsix",
+  "displayName": "Install .VSIX",
+  "description": "Install .vsix extensions right from the explorer, with a right click.",
+  "icon": "resources/logo-128x128.png",
+  "version": "1.0.1",
+  "license": "MIT",
+  "main": "out/src/extension.js",
+  "publisher": "fabiospampinato",
+  "activationEvents": [
+    "onCommand:installVSIX.install"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "vsix",
+        "aliases": [
+          "VSIX"
+        ],
+        "extensions": [
+          ".vsix"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "installVSIX.install",
+        "title": "Install Extension"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "installVSIX.install",
+          "when": "false"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "installVSIX.install",
+          "when": "resourceLangId == vsix"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "installVSIX.install",
+          "when": "resourceLangId == vsix"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "publish": "vsce publish && npm publish",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "bugs": {
+    "url": "https://github.com/fabiospampinato/vscode-install-vsix/issues"
+  },
+  "author": {
+    "name": "Fabio Spampinato",
+    "email": "spampinabio@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiospampinato/vscode-install-vsix.git"
+  },
+  "engines": {
+    "vscode": "^1.10.0"
+  },
+  "keywords": [
+    "vscode",
+    "vsc",
+    "extension",
+    "install",
+    "vsix"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.40",
+    "tslint": "^4.4.2",
+    "typescript": "~2.2.0",
+    "vscode": "^1.1.4"
+  }
+}
