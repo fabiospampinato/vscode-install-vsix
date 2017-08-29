@@ -3,7 +3,7 @@
   "displayName": "Install .VSIX",
   "description": "Install .vsix extensions right from the explorer, with a right click.",
   "icon": "resources/logo-128x128.png",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "main": "out/src/extension.js",
   "publisher": "fabiospampinato",
@@ -38,12 +38,14 @@
       "explorer/context": [
         {
           "command": "installVSIX.install",
+          "group": "installation",
           "when": "resourceLangId == vsix"
         }
       ],
       "editor/title/context": [
         {
           "command": "installVSIX.install",
+          "group": "installation",
           "when": "resourceLangId == vsix"
         }
       ]
