@@ -12,12 +12,13 @@ async function install ( file: vscode.Uri ) {
 
   /* TERMINAL */
 
-  const term = vscode.window.createTerminal ( 'VSIX' );
+  const term = vscode.window.createTerminal ( 'VSIX' ),
+        command = Utils.isInsiders () ? 'code-insiders' : 'code';
 
   await term.processId;
   await Utils.delay ( 200 );
 
-  term.sendText ( `code --install-extension ${file.path}`, true );
+  term.sendText ( `${command} --install-extension ${file.path}`, true );
 
   term.show ( false );
 

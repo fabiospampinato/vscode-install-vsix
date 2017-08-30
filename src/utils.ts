@@ -31,6 +31,12 @@ const Utils = {
 
     return new Promise ( resolve => setTimeout ( resolve, ms ) );
 
+  },
+
+  isInsiders () {
+
+    return !!vscode.env.appName.match ( /insiders/i );
+
   }
 
 };
