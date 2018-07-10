@@ -8,7 +8,7 @@ import Utils from './utils';
 
 async function install ( file: vscode.Uri ) {
 
-  if ( !file || !file.path ) return;
+  if ( !file || !file.fsPath ) return;
 
   /* TERMINAL */
 
@@ -18,7 +18,7 @@ async function install ( file: vscode.Uri ) {
   await term.processId;
   await Utils.delay ( 200 );
 
-  term.sendText ( `${command} --install-extension ${file.path}`, true );
+  term.sendText ( `${command} --install-extension ${file.fsPath}`, true );
 
   term.show ( false );
 
