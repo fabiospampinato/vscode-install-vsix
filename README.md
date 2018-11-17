@@ -1,7 +1,7 @@
 # Install .VSIX
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/fabiospampinato/vscode-install-vsix/master/resources/logo.png" width="128" alt="Logo">
+  <img src="https://raw.githubusercontent.com/fabiospampinato/vscode-install-vsix/master/resources/logo.png" width="128" alt="Logo">
 </p>
 
 Install .vsix extensions right from the explorer, with a right click.
