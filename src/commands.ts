@@ -7,10 +7,6 @@ const installationEndMessage = 'INSTALLATION ENDED';
 
 /* COMMANDS */
 
-function isWindows () {
-  return process.platform === 'win32';
-}
-
 async function showSuccessMessage () {
   const reloadButtonMessage = 'Reload Now',
     option = await vscode.window.showInformationMessage(
@@ -23,7 +19,7 @@ async function showSuccessMessage () {
 }
 
 function showErrorMessage () {
-  vscode.window.showInformationMessage(
+  vscode.window.showWarningMessage(
     `The extension does not appear to be installed correctly. Please check the 'VSIX' terminal for more information.`
   );
 }
@@ -36,14 +32,13 @@ async function install ( file: vscode.Uri ) {
 
   const term = <any>vscode.window.createTerminal ( 'VSIX' ),
     command = Utils.isInsiders () ? 'code-insiders' : 'code',
-    commandLine = `${command} --install-extension ${file.fsPath} ${
-      isWindows () ? '&' : ';'
-    } echo ${installationEndMessage}`;
+    commandEndInstallation = `echo ${installationEndMessage}`;
 
   await term.processId;
   await Utils.delay ( 200 );
 
-  term.sendText ( commandLine, true );
+  term.sendText ( `${command} --install-extension ${file.fsPath}` );
+  term.sendText ( commandEndInstallation );
   term.show ( false );
 
   let installationSuccesful = false;
@@ -51,7 +46,7 @@ async function install ( file: vscode.Uri ) {
     if (data.indexOf('was successfully installed!') > 0)
       installationSuccesful = true
 
-    if ( data.startsWith( installationEndMessage ) )
+    if ( data.indexOf(commandEndInstallation) === -1 && data.indexOf( installationEndMessage ) >= 0 )
       installationSuccesful ? showSuccessMessage() : showErrorMessage()
   } );
 
