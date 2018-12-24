@@ -1,3 +1,6 @@
+### Version 1.1.6
+- Contribution: Subscription on the terminal's onDidWriteData to display 'Reload Now' button only when the installation is complete. (JulienCroain)
+
 ### Version 1.1.5
 - Readme: using hi-res logo
 
