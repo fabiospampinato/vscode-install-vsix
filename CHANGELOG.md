@@ -1,3 +1,6 @@
+### Version 1.2.0
+- Added installation process termination detection
+
 ### Version 1.1.5
 - Readme: using hi-res logo
 
