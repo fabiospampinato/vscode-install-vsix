@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import * as vscode from 'vscode';
+import Messages from './messages';
 import Utils from './utils';
 
 /* COMMANDS */
@@ -18,17 +19,34 @@ async function install ( file: vscode.Uri ) {
   await term.processId;
   await Utils.delay ( 200 );
 
-  term.sendText ( `${command} --install-extension ${file.fsPath}`, true );
+  term.sendText ( `${command} --install-extension '${file.fsPath}'` );
+  term.sendText ( `echo 'Installation ended'` );
 
   term.show ( false );
 
-  /* INFO */
+  /* MESSAGES */
 
-  const option = await vscode.window.showInformationMessage ( 'Installing extension... Once done, a restart is needed.', { title: 'Reload Now' } );
+  Messages.installing ();
 
-  if ( !option || option.title !== 'Reload Now' ) return;
+  if ( term['onDidWriteData'] ) {
 
-  vscode.commands.executeCommand ( 'workbench.action.reloadWindow' );
+    term['onDidWriteData'] ( data => {
+
+      if ( data.includes ( 'was successfully installed!' ) ) {
+
+        Messages.success ();
+
+        term.dispose ();
+
+      } else if ( data.includes ( 'Installation ended' ) && !data.includes ( 'echo' ) ) {
+
+        Messages.error ();
+
+      }
+
+    });
+
+  }
 
 }
 

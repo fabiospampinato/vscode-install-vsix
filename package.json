@@ -71,7 +71,7 @@
     "url": "https://github.com/fabiospampinato/vscode-install-vsix.git"
   },
   "engines": {
-    "vscode": "^1.10.0"
+    "vscode": "^1.25.0"
   },
   "keywords": [
     "vscode",
@@ -90,7 +90,7 @@
   "devDependencies": {
     "ts-loader": "^5.2.1",
     "typescript": "~2.4.1",
-    "vscode": "^1.1.4",
+    "vscode": "^1.1.22",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   }
