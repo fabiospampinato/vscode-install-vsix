@@ -1,3 +1,6 @@
+### Version 1.1.6
+- Add double quotes around file path
+
 ### Version 1.1.5
 - Readme: using hi-res logo
 
