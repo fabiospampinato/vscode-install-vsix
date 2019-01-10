@@ -19,7 +19,7 @@ async function install ( file: vscode.Uri ) {
   await term.processId;
   await Utils.delay ( 200 );
 
-  term.sendText ( `${command} --install-extension '${file.fsPath}'` );
+  term.sendText ( `${command} --install-extension "${file.fsPath}"` );
   term.sendText ( `echo 'Installation ended'` );
 
   term.show ( false );
