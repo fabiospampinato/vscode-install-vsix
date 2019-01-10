@@ -1,3 +1,6 @@
+### Version 1.2.1
+- Using double quotes instead of single ones in order to fix a bug under Windows
+
 ### Version 1.2.0
 - Added installation process termination detection
 
