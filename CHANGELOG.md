@@ -1,3 +1,6 @@
+### Version 1.3.0
+- Added support for the Exploration build
+
 ### Version 1.2.1
 - Using double quotes instead of single ones in order to fix a bug under Windows
 
