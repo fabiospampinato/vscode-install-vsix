@@ -1,3 +1,12 @@
+### Version 1.3.0
+- Added support for the Exploration build
+
+### Version 1.2.1
+- Using double quotes instead of single ones in order to fix a bug under Windows
+
+### Version 1.2.0
+- Added installation process termination detection
+
 ### Version 1.1.5
 - Readme: using hi-res logo
 
