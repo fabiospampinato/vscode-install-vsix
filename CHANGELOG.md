@@ -1,3 +1,7 @@
+### Version 1.4.0
+- Added settings to always force an installation
+- Detects if the force parameter is needed for installation and ask the user if he wants to force
+
 ### Version 1.3.0
 - Added support for the Exploration build
 

@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import * as vscode from 'vscode';
+import Utils from './utils';
 
 /* MESSAGES */
 
@@ -21,6 +22,24 @@ const Messages = {
 
     vscode.commands.executeCommand ( 'workbench.action.reloadWindow' );
 
+  },
+
+  async retry ( file: vscode.Uri ) {
+    const option = await vscode.window.showWarningMessage (
+      'Installation failed, would you force installation.',
+      { title: 'This time' },
+      { title: 'Always' }
+    );
+
+    if ( !option ) {
+      return;
+    } else if ( option.title === 'This time' ) {
+      vscode.commands.executeCommand( 'installVSIX.install', file, true );
+    } else if ( option.title === 'Always' ) {
+      await Utils.setInstallationForced ( true );
+
+      vscode.commands.executeCommand ( 'installVSIX.install', file );
+    }
   },
 
   error () {

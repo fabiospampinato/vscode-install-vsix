@@ -7,9 +7,12 @@ import Utils from './utils';
 
 /* COMMANDS */
 
-async function install ( file: vscode.Uri ) {
+async function install ( file: vscode.Uri, args: Array<any> | boolean ) {
 
   if ( !file || !file.fsPath ) return;
+
+  let force =
+    (Array.isArray(args) ? false : args) || Utils.isInstallationForced();
 
   /* TERMINAL */
 
@@ -18,11 +21,6 @@ async function install ( file: vscode.Uri ) {
 
   await term.processId;
   await Utils.delay ( 200 );
-
-  term.sendText ( `${command} --install-extension "${file.fsPath}"` );
-  term.sendText ( `echo 'Installation ended'` );
-
-  term.show ( false );
 
   /* MESSAGES */
 
@@ -38,6 +36,10 @@ async function install ( file: vscode.Uri ) {
 
         term.dispose ();
 
+      } else if ( data.includes( `Use '--force'` ) ) {
+        Messages.retry ( file );
+
+        term.dispose ();
       } else if ( data.includes ( 'Installation ended' ) && !data.includes ( 'echo' ) ) {
 
         Messages.error ();
@@ -45,9 +47,12 @@ async function install ( file: vscode.Uri ) {
       }
 
     });
-
   }
 
+  term.sendText ( `${command} --install-extension "${file.fsPath}" ${force ? "--force" : ""}` );
+  term.sendText ( `echo 'Installation ended'` );
+
+  term.show ( false );
 }
 
 /* EXPORT */

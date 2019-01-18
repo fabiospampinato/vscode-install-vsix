@@ -43,8 +43,23 @@ const Utils = {
 
     return /exploration/i.test ( vscode.env.appName );
 
-  }
+  },
 
+  isInstallationForced() {
+    return vscode.workspace
+      .getConfiguration()
+      .get("installVSIX.installationForced");
+  },
+
+  setInstallationForced(force: boolean) {
+    return vscode.workspace
+      .getConfiguration()
+      .update(
+        "installVSIX.installationForced",
+        force,
+        vscode.ConfigurationTarget.Global
+      );
+  }
 };
 
 /* EXPORT */
