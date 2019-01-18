@@ -14,7 +14,7 @@ async function install ( file: vscode.Uri ) {
   /* TERMINAL */
 
   const term = vscode.window.createTerminal ( 'VSIX' ),
-        command = Utils.isInsiders () ? 'code-insiders' : 'code';
+        command = Utils.isInsiders () ? 'code-insiders' : ( Utils.isExploration () ? 'code-exploration' : 'code' );
 
   await term.processId;
   await Utils.delay ( 200 );
