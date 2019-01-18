@@ -37,6 +37,12 @@ const Utils = {
 
     return !!vscode.env.appName.match ( /insiders/i );
 
+  },
+
+  isExploration () {
+
+    return /exploration/i.test ( vscode.env.appName );
+
   }
 
 };
