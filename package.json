@@ -3,7 +3,7 @@
   "displayName": "Install .VSIX",
   "description": "Install .vsix extensions right from the explorer, with a right click.",
   "icon": "resources/logo-128x128.png",
-  "version": "1.4.0",
+  "version": "1.3.0",
   "license": "MIT",
   "main": "out/extension.js",
   "publisher": "fabiospampinato",
@@ -54,10 +54,10 @@
       {
         "title": "Install .VSIX",
         "properties": {
-          "installVSIX.installationForced": {
+          "installVSIX.force": {
             "type": "boolean",
             "default": false,
-            "description": "Installation forced."
+            "description": "Use the '--force' option to force installation."
           }
         }
       }
