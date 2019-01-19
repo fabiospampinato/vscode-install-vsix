@@ -48,18 +48,9 @@ const Utils = {
   isInstallationForced() {
     return vscode.workspace
       .getConfiguration()
-      .get("installVSIX.installationForced");
-  },
-
-  setInstallationForced(force: boolean) {
-    return vscode.workspace
-      .getConfiguration()
-      .update(
-        "installVSIX.installationForced",
-        force,
-        vscode.ConfigurationTarget.Global
-      );
+      .get("installVSIX.force");
   }
+
 };
 
 /* EXPORT */

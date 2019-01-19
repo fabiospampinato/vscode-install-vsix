@@ -11,8 +11,7 @@ async function install ( file: vscode.Uri, args: Array<any> | boolean ) {
 
   if ( !file || !file.fsPath ) return;
 
-  let force =
-    (Array.isArray(args) ? false : args) || Utils.isInstallationForced();
+  let force = (Array.isArray(args) ? false : args) || Utils.isInstallationForced();
 
   /* TERMINAL */
 

@@ -26,20 +26,16 @@ const Messages = {
 
   async retry ( file: vscode.Uri ) {
     const option = await vscode.window.showWarningMessage (
-      'Installation failed, would you force installation.',
-      { title: 'This time' },
-      { title: 'Always' }
+      'Installation failed, would you force installation. You can go to the extensions settings to force all installation.',
+      { title: 'Yes' }, { title: 'No' }
     );
 
-    if ( !option ) {
+    if ( !option || option.title === 'No' ) {
       return;
-    } else if ( option.title === 'This time' ) {
-      vscode.commands.executeCommand( 'installVSIX.install', file, true );
-    } else if ( option.title === 'Always' ) {
-      await Utils.setInstallationForced ( true );
-
-      vscode.commands.executeCommand ( 'installVSIX.install', file );
     }
+	
+	vscode.commands.executeCommand( 'installVSIX.install', file, true );
+
   },
 
   error () {
