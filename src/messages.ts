@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import * as vscode from 'vscode';
+import * as Commands from './commands';
 
 /* MESSAGES */
 
@@ -26,6 +27,16 @@ const Messages = {
   error () {
 
     vscode.window.showWarningMessage ( 'The extension was not installed correctly. Please check the terminal for more informations.' );
+
+  },
+
+  async force ( file: vscode.Uri ) {
+
+    const option = await vscode.window.showWarningMessage ( 'A newer version is already installed, would you like to force the installation?', { title: 'Yes' }, { title: 'No' } );
+
+    if ( !option || option.title !== 'Yes' ) return;
+
+    Commands.install ( file, true );
 
   }
 

@@ -49,7 +49,19 @@
           "when": "resourceLangId == vsix"
         }
       ]
-    }
+    },
+    "configuration": [
+      {
+        "title": "Install .VSIX",
+        "properties": {
+          "installVSIX.force": {
+            "type": "boolean",
+            "default": false,
+            "description": "Always use the '--force' option to force installation"
+          }
+        }
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "rm -rf out && webpack --mode production",

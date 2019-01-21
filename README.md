@@ -20,6 +20,14 @@ Right click a .vsix file from the explorer and select `Install Extension`:
 
 ![Demo](resources/demo.png)
 
+## Settings
+
+```js
+{
+  "installVSIX.force": false // Always use the '--force' option to force installation
+}
+```
+
 ## Contributing
 
 If you found a problem, or have a feature request, please open an [issue](https://github.com/fabiospampinato/vscode-install-vsix/issues) about it.
