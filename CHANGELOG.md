@@ -1,3 +1,6 @@
+### Version 1.4.0
+- Added an option for forcing the installation
+
 ### Version 1.3.0
 - Added support for the Exploration build
 
