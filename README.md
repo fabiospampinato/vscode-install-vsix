@@ -1,3 +1,5 @@
+> This repo is now archived because the feature it provides is now implemented by vscode itself.
+
 # Install .VSIX
 
 <p align="center">
